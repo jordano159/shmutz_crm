@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :calls
+  resources :sign_ups
   resources :campains
   resources :kens
   resources :kids

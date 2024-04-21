@@ -1,17 +1,17 @@
 require "application_system_test_case"
 
-class CallsTest < ApplicationSystemTestCase
+class SignUpsTest < ApplicationSystemTestCase
   setup do
-    @call = calls(:one)
+    @call = sign_ups(:one)
   end
 
   test "visiting the index" do
-    visit calls_url
-    assert_selector "h1", text: "Calls"
+    visit sign_ups_url
+    assert_selector "h1", text: "SignUps"
   end
 
   test "should create call" do
-    visit calls_url
+    visit sign_ups_url
     click_on "New call"
 
     fill_in "Campain", with: @call.campain_id

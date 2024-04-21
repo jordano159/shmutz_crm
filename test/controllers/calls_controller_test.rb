@@ -1,12 +1,12 @@
 require "test_helper"
 
-class CallsControllerTest < ActionDispatch::IntegrationTest
+class SignUpsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @call = calls(:one)
+    @call = sign_ups(:one)
   end
 
   test "should get index" do
-    get calls_url
+    get sign_ups_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class CallsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create call" do
     assert_difference("Call.count") do
-      post calls_url, params: { call: { campain_id: @call.campain_id, date: @call.date, kid_id: @call.kid_id, notes: @call.notes } }
+      post sign_ups_url, params: { call: { campain_id: @call.campain_id, date: @call.date, kid_id: @call.kid_id, notes: @call.notes } }
     end
 
     assert_redirected_to call_url(Call.last)
@@ -43,6 +43,6 @@ class CallsControllerTest < ActionDispatch::IntegrationTest
       delete call_url(@call)
     end
 
-    assert_redirected_to calls_url
+    assert_redirected_to sign_ups_url
   end
 end

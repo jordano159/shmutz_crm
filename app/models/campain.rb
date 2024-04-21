@@ -1,7 +1,7 @@
 class Campain < ApplicationRecord
   belongs_to :ken
-  has_many :calls
-  has_many :kids, through: :calls
+  has_many :sign_ups
+  has_many :kids, through: :sign_ups
   accepts_nested_attributes_for :kids, reject_if: blank?, allow_destroy: false
-  accepts_nested_attributes_for :calls, allow_destroy: true
+  accepts_nested_attributes_for :sign_ups, allow_destroy: true
 end

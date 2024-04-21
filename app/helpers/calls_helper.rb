@@ -1,2 +1,2 @@
-module CallsHelper
+module SignUpsHelper
 end
