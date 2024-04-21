@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @campain %>
+
+<div>
+  <%= link_to "Edit this campain", edit_campain_path(@campain) %> |
+  <%= link_to "Back to campains", campains_path %>
+
+  <%= button_to "Destroy this campain", @campain, method: :delete %>
+</div>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Kens</h1>
+
+<div id="kens">
+  <% @kens.each do |ken| %>
+    <%= render ken %>
+    <p>
+      <%= link_to "Show this ken", ken %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New ken", new_ken_path %>

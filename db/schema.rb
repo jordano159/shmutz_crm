@@ -10,9 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_21_184120) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_21_210751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calls", force: :cascade do |t|
+    t.date "date"
+    t.string "notes"
+    t.bigint "kid_id", null: false
+    t.bigint "campain_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campain_id"], name: "index_calls_on_campain_id"
+    t.index ["kid_id"], name: "index_calls_on_kid_id"
+  end
+
+  create_table "campains", force: :cascade do |t|
+    t.string "name"
+    t.date "year"
+    t.text "script"
+    t.string "notes"
+    t.bigint "ken_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ken_id"], name: "index_campains_on_ken_id"
+  end
+
+  create_table "kens", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "kids", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "grade"
+    t.integer "status"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_21_184120) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "calls", "campains"
+  add_foreign_key "calls", "kids"
+  add_foreign_key "campains", "kens"
 end
