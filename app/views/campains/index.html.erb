@@ -2,13 +2,17 @@
 
 <h1>Campains</h1>
 
-<div id="campains">
-  <% @campains.each do |campain| %>
-    <%= render campain %>
-    <p>
-      <%= link_to "Show this campain", campain %>
-    </p>
-  <% end %>
+<div id="campains" class="container">
+  <h1 class="my-4">Campaigns</h1>
+  <div class="row">
+    <% @campains.each do |campain| %>
+      <div class="col-md-4 mb-4" id="<%= dom_id campain %>">
+        <%= render campain %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <%= link_to "New campain", new_campain_path %>
+
+  

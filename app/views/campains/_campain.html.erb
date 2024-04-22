@@ -1,27 +1,13 @@
-<div id="<%= dom_id campain %>">
-  <p>
-    <strong>Name:</strong>
-    <%= campain.name %>
-  </p>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= campain.name %> <%= campain.year.year %></h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">תסריט שיחה: <%= campain.script %></li>
+              <li class="list-group-item">הערות: <%= campain.notes %></li>
+              <li class="list-group-item">קן: <%= Ken.find(campain.ken_id).name %></li>
+            </ul>
+            <%= link_to "כניסה לגיוס", campain_path(campain), class: "btn btn-primary" %>
+          </div>
+        </div>
 
-  <p>
-    <strong>Year:</strong>
-    <%= campain.year %>
-  </p>
 
-  <p>
-    <strong>Script:</strong>
-    <%= campain.script %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= campain.notes %>
-  </p>
-
-  <p>
-    <strong>Ken:</strong>
-    <%= campain.ken_id %>
-  </p>
-
-</div>
