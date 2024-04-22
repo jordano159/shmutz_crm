@@ -23,5 +23,9 @@
     <strong>Notes:</strong>
     <%= kid.notes %>
   </p>
+  <p>
+    <strong>Campains:</strong>
+    <%= kid.campains.pluck(:name) %>
+  </p>
 
 </div>
