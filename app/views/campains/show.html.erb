@@ -3,6 +3,7 @@
 <%= render @campain %>
 
 <div>
+  <%= link_to "רישום חניכים חדשים", new_kid_path(campain: @campain) %> |
   <%= link_to "Edit this campain", edit_campain_path(@campain) %> |
   <%= link_to "Back to campains", campains_path %>
 

@@ -65,6 +65,6 @@ class KidsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kid_params
-      params.require(:kid).permit(:name, :phone, :grade, :status, :notes)
+      params.require(:kid).permit(:name, :phone, :grade, :status, :notes, campain_ids: [])
     end
 end

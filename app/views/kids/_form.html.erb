@@ -9,6 +9,7 @@
     <%= f.input :grade %>
     <%= f.input :status, collection: Kid.statuses.keys, selected: @kid.status %>
     <%= f.input :notes %>
+    <%= f.association :campains, value: Campain.find(params[:campain].to_i).name, selected: Campain.find(params[:campain].to_i).id %>
   </div>
 
   <div class="form-actions">
