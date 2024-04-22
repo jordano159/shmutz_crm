@@ -1,14 +1,70 @@
 <p style="color: green"><%= notice %></p>
+<% if false %>
+  <h1>Kids</h1>
 
-<h1>Kids</h1>
+  <div id="kids">
+    <% @kids.each do |kid| %>
+      <%= render kid %>
+      <p>
+        <%= link_to "Show this kid", kid %>
+      </p>
+    <% end %>
+  </div>
 
-<div id="kids">
-  <% @kids.each do |kid| %>
-    <%= render kid %>
-    <p>
-      <%= link_to "Show this kid", kid %>
-    </p>
+  <%= link_to "New kid", new_kid_path %>
+<% end %>
+
+<div class="kids">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="kids__header">חניכים וחניכות</h1>
+    </div>
+  </div>
+  <%= turbo_frame_tag "kids" do %>
+    <div class="flow-root mt-8">
+      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+          <div class="kids__table--shadow">
+            <table class="kids__table">
+              <thead class="kids__thead">
+                <tr>
+                  <%= sortable_table_header 'שם', :name, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'טלפון', :phone, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'שכבה', :grade, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'הערות', :notes, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'סטטוס', :status, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'Created At', :created_at, :kids_path, class: 'kids__row--header' %>
+                </tr>
+              </thead>
+              <tbody class="kids__tbody">
+                <% @kids.each do |kid| %>
+                  <tr>
+                    <td class="kids__row kids__row--name">
+                      <%= kid.name %>
+                    </td>
+                    <td class="kids__row kids__row--phone">
+                      <%= kid.phone %>
+                    </td>
+                    <td class="kids__row kids__row--grade">
+                      <%= kid.grade %>
+                    </td>
+                    <td class="kids__row kids__row--notes">
+                      <%= kid.notes %>
+                    </td>
+                    <td class="kids__row kids__row--status">
+                      <%= kid.status %>
+                    </td>
+                    <td class="kids__row kids__row--created-at">
+                      <%= kid.created_at.strftime('%m/%d/%Y') %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <%= paginate @kids %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New kid", new_kid_path %>

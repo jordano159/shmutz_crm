@@ -3,7 +3,10 @@ class KidsController < ApplicationController
 
   # GET /kids or /kids.json
   def index
-    @kids = Kid.all
+    sort_column = params[:sort] || "created_at"
+    sort_direction = params[:direction].presence_in(%w[asc desc]) || "desc"
+
+    @kids = Kid.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   # GET /kids/1 or /kids/1.json
