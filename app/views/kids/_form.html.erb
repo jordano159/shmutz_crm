@@ -7,7 +7,7 @@
     <%= f.input :name %>
     <%= f.input :phone %>
     <%= f.input :grade %>
-    <%= f.input :status %>
+    <%= f.input :status, collection: Kid.statuses.keys, selected: @kid.status %>
     <%= f.input :notes %>
   </div>
 
