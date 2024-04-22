@@ -24,9 +24,9 @@
     <div class="flow-root mt-8">
       <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <div class="kids__table--shadow">
-            <table class="kids__table">
-              <thead class="kids__thead">
+          <div class="kids__table--shadow ">
+            <table class="kids__table table table-striped table-hover">
+              <thead class="kids__thead table-light">
                 <tr>
                   <%= sortable_table_header 'שם', :name, :kids_path, class: 'kids__row--header' %>
                   <%= sortable_table_header 'טלפון', :phone, :kids_path, class: 'kids__row--header' %>
@@ -36,7 +36,7 @@
                   <%= sortable_table_header 'Created At', :created_at, :kids_path, class: 'kids__row--header' %>
                 </tr>
               </thead>
-              <tbody class="kids__tbody">
+              <tbody class="kids__tbody table-group-divider">
                 <% @kids.each do |kid| %>
                   <tr>
                     <td class="kids__row kids__row--name">
