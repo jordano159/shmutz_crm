@@ -16,12 +16,12 @@
             <table class="kids__table table table-striped table-hover">
               <thead class="kids__thead table-light">
                 <tr>
-                  <%= sortable_table_header 'שם', :name, :kids_path, class: 'kids__row--header' %>
-                  <%= sortable_table_header 'טלפון', :phone, :kids_path, class: 'kids__row--header' %>
-                  <%= sortable_table_header 'שכבה', :grade, :kids_path, class: 'kids__row--header' %>
-                  <%= sortable_table_header 'הערות', :notes, :kids_path, class: 'kids__row--header' %>
-                  <%= sortable_table_header 'סטטוס', :status, :kids_path, class: 'kids__row--header' %>
-                  <%= sortable_table_header 'Created At', :created_at, :kids_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'שם', :name, :campain_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'טלפון', :phone, :campain_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'שכבה', :grade, :campain_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'הערות', :notes, :campain_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'סטטוס', :status, :campain_path, class: 'kids__row--header' %>
+                  <%= sortable_table_header 'תאריך יצירה', :created_at, :campain_path, class: 'kids__row--header' %>
                 </tr>
               </thead>
               <tbody class="kids__tbody table-group-divider">
@@ -40,10 +40,10 @@
                       <%= kid.notes %>
                     </td>
                     <td class="kids__row kids__row--status">
-                      <%= kid.status %>
+                      <%= heb_status[kid.status.to_sym]  %>
                     </td>
                     <td class="kids__row kids__row--created-at">
-                      <%= kid.created_at.strftime('%m/%d/%Y') %>
+                      <%= kid.created_at. strftime('%d/%m/%Y') %>
                     </td>
                   </tr>
                 <% end %>

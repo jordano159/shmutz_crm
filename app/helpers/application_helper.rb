@@ -9,7 +9,7 @@ module ApplicationHelper
     direction = (column.to_s == params[:sort].to_s && params[:direction] == "asc") ? "desc" : "asc"
 
     query_params = request.query_parameters.merge(sort: column, direction: direction)
-
+    
     path = send(path_method, query_params)
     link_to(path, data: {turbo_action: "advance"}, class: "flex items-center", **) do
       concat title
@@ -31,5 +31,14 @@ module ApplicationHelper
     content_tag(:svg, xmlns: "http://www.w3.org/2000/svg", class: "d-inline-block mr-1", style: "width: 1rem; height: 1rem;", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor") do
       "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='#{path_d}'></path>".html_safe
     end
+  end
+
+  def heb_status
+    heb_status = {
+      fresh: "חדש",
+      call_back: "צריך להתקשר חזרה",
+      not_interested: "לא מעוניין.ת",
+      false_info: "מידע שגוי"
+    } 
   end
 end
