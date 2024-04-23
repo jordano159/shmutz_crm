@@ -1,4 +1,8 @@
 
+<% def grades %>
+  <% grades = ["ג'","ד'","ה'","ו'","ז'","ח'","ט'","י'","י''א","י''ב","אחר"] %>
+<% end %>
+
 <%= simple_form_for(@kid) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -6,8 +10,8 @@
   <div class="form-inputs">
     <%= f.input :name, label: "שם החניכ.ה", error: 'חובה למלא שם' %>
     <%= f.input :phone, label: "טלפון", error: 'חובה למלא לפחות 9 ספרות' %>
-    <%= f.input :grade, label: "שכבה" %>
-    <%= f.input :status, label: "סטטוס", collection: Kid.statuses.keys, selected: @kid.status %>
+    <%= f.input :grade, label: "שכבה", collection: grades, selected: @kid.grade %>
+    <%= f.input :status, label: "סטטוס", collection: heb_status, label_method: :second, value_method: :first, selected: @kid.status %>
     <%= f.input :notes, label: "הערות" %>
     <%= f.association :campains, label: "גיוסים משויכים", value: Campain.find(params[:campain].to_i).name, selected: Campain.find(params[:campain].to_i).id %>
   </div>
@@ -16,4 +20,5 @@
   <div class="form-actions">
     <%= f.button :submit, "שליחה", class: "btn btn-primary" %>
   </div>
+  
 <% end %>
