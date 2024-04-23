@@ -8,6 +8,9 @@ class CampainsController < ApplicationController
 
   # GET /campains/1 or /campains/1.json
   def show
+    sort_column = params[:sort] || "created_at"
+    sort_direction = params[:direction].presence_in(%w[asc desc]) || "desc"
+    @kids = @campain.kids.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   # GET /campains/new

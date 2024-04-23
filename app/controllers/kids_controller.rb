@@ -5,7 +5,6 @@ class KidsController < ApplicationController
   def index
     sort_column = params[:sort] || "created_at"
     sort_direction = params[:direction].presence_in(%w[asc desc]) || "desc"
-
     @kids = Kid.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
@@ -28,8 +27,12 @@ class KidsController < ApplicationController
 
     respond_to do |format|
       if @kid.save
-        format.html { redirect_to kid_url(@kid), notice: "Kid was successfully created." }
-        format.json { render :show, status: :created, location: @kid }
+        if params[:current_campain].present?
+          format.html { redirect_to campain_path(params[:current_campain]), notice: "Kid was successfully created." }
+        else
+          format.html { redirect_to kid_url(@kid), notice: "Kid was successfully created." }
+          format.json { render :show, status: :created, location: @kid }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @kid.errors, status: :unprocessable_entity }
