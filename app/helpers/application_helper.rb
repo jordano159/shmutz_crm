@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def svg_icon(path_d)
-    content_tag(:svg, xmlns: "http://www.w3.org/2000/svg", class: "ml-1 inline w-4 h-4", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor") do
+    content_tag(:svg, xmlns: "http://www.w3.org/2000/svg", class: "d-inline-block mr-1", style: "width: 1rem; height: 1rem;", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor") do
       "<path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='#{path_d}'></path>".html_safe
     end
   end
