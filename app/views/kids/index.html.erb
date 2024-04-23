@@ -40,10 +40,12 @@
                 <% @kids.each do |kid| %>
                   <tr>
                     <td class="kids__row kids__row--name">
-                      <%= kid.name %>
+                      <%= link_to kid.name, kid %>
                     </td>
                     <td class="kids__row kids__row--phone">
                       <%= kid.phone %>
+                      <%= link_to "<i class=\"bi bi-telephone-outbound\"> להתקשר </i>".html_safe, "tel:#{kid.phone}", class: "btn btn-primary" %>
+                      <%= link_to "<i class=\"bi bi-whatsapp\"> וואטסאפ </i>".html_safe, "https://wa.me/972#{kid.phone}", class: "btn btn-success" %>
                     </td>
                     <td class="kids__row kids__row--grade">
                       <%= kid.grade %>
