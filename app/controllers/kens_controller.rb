@@ -8,6 +8,7 @@ class KensController < ApplicationController
 
   # GET /kens/1 or /kens/1.json
   def show
+    @campains = @ken.campains
   end
 
   # GET /kens/new

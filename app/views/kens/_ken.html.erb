@@ -1,7 +1,17 @@
-<div id="<%= dom_id ken %>">
-  <p>
-    <strong>Name:</strong>
-    <%= ken.name %>
-  </p>
+<div class="card-body">
+  <h5 class="card-title"><%= ken.name %></h5>
+</div>
 
+<div id="campains" class="container">
+  <h1 class="my-4">הגיוסים של הקן</h1>
+  <div class="row">
+    <% @campains.each do |campain| %>
+      <div class="col-md-4 mb-4" id="<%= dom_id campain %>">
+        <div class="card">
+          <%= render campain %>
+          <%= link_to "כניסה לגיוס", campain_path(campain), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

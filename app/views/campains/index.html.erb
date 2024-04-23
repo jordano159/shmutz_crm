@@ -1,9 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Campains</h1>
-
 <div id="campains" class="container">
-  <h1 class="my-4">Campaigns</h1>
+  <h1 class="my-4">גיוסים</h1>
   <div class="row">
     <% @campains.each do |campain| %>
       <div class="col-md-4 mb-4" id="<%= dom_id campain %>">
@@ -16,6 +14,6 @@
   </div>
 </div>
 
-<%= link_to "New campain", new_campain_path %>
+<%= link_to "יצירת גיוס חדש", new_campain_path %>
 
   

@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Kens</h1>
+<% if false %>
+  <h1>קנים</h1>
 
-<div id="kens">
-  <% @kens.each do |ken| %>
-    <%= render ken %>
-    <p>
-      <%= link_to "Show this ken", ken %>
-    </p>
-  <% end %>
+  <div id="kens">
+    <% @kens.each do |ken| %>
+      <%= render ken %>
+      <p>
+        <%= link_to "Show this ken", ken %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+<div id="kens" class="container">
+  <h1 class="my-4">קנים</h1>
+  <div class="row">
+    <% @kens.each do |ken| %>
+      <div class="col-md-4 mb-4" id="<%= dom_id ken %>">
+        <div class="card">
+          <%= render ken %>
+          <%= link_to "כניסה לקן", ken_path(ken), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New ken", new_ken_path %>
+<%= link_to "יצירת קן חדש", new_ken_path %>
