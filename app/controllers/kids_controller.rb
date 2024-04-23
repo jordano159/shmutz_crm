@@ -34,6 +34,7 @@ class KidsController < ApplicationController
           format.json { render :show, status: :created, location: @kid }
         end
       else
+        params[:campain] = params[:current_campain]
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @kid.errors, status: :unprocessable_entity }
       end
