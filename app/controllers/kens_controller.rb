@@ -4,6 +4,7 @@ class KensController < ApplicationController
   # GET /kens or /kens.json
   def index
     @kens = Ken.all
+    @campains = Campain.all
   end
 
   # GET /kens/1 or /kens/1.json
